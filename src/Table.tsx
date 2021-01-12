@@ -1,14 +1,14 @@
 import React, { Component, ChangeEvent } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  } from '@fortawesome/free-solid-svg-icons'
+import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 
-type SearchBarProps = {
+type TableProps = {
     text: string;
     onTextChange: (t: string) => void;
     onTextCreate: (t: string) => void;
 }
-export class SearchBar extends Component<SearchBarProps> {
-    constructor(props: SearchBarProps) {
+export class Table extends Component<TableProps> {
+    constructor(props: TableProps) {
         super(props);
     }
 
