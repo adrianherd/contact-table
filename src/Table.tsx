@@ -12,7 +12,7 @@ export class Table extends Component<TableProps> {
     render() {
         return (
             <div className="">
-                /* contact name, contact tags, deals, total value with currency and location */
+                {/* contact name, contact tags, deals, total value with currency and location */}
                 <table>
                     <thead>
                         <th>Name</th>
@@ -22,7 +22,7 @@ export class Table extends Component<TableProps> {
                         <th>Location</th>
                     </thead>
                     <tbody>
-                        /* Definitely its own mini component would be helpful */
+                        {/* Definitely its own mini component would be helpful */}
                         <tr>
                             <td>Test</td>
                             <td>Test</td>
