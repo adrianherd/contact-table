@@ -3,9 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 
 type TableProps = {
-    text: string;
-    onTextChange: (t: string) => void;
-    onTextCreate: (t: string) => void;
 }
 export class Table extends Component<TableProps> {
     constructor(props: TableProps) {
@@ -13,7 +10,6 @@ export class Table extends Component<TableProps> {
     }
 
     render() {
-        const userText = this.props.text;
         return (
             <div className="">
                 /* contact name, contact tags, deals, total value with currency and location */
