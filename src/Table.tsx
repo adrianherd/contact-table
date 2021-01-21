@@ -15,11 +15,13 @@ export class Table extends Component<TableProps> {
                 {/* contact name, contact tags, deals, total value with currency and location */}
                 <table>
                     <thead>
-                        <th>Name</th>
-                        <th>Tags</th>
-                        <th>Deals</th>
-                        <th>Total Value</th>
-                        <th>Location</th>
+                        <tr>
+                            <th>Name</th>
+                            <th>Tags</th>
+                            <th>Deals</th>
+                            <th>Total Value</th>
+                            <th>Location</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {/* Definitely its own mini component would be helpful */}
@@ -33,6 +35,26 @@ export class Table extends Component<TableProps> {
                     </tbody>
                 </table>
             </div>
+        )
+    }
+}
+
+type TableRowProps = {
+}
+export class TableRow extends Component<TableRowProps> {
+    constructor(props: TableRowProps) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
         )
     }
 }
