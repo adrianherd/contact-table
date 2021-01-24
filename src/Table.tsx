@@ -9,6 +9,20 @@ export class Table extends Component<TableProps> {
         super(props);
     }
 
+    componentDidMount() {
+        fetch("api/3/contacts?status=-1&orders[email]=ASC&include=deals,contactTags.tags", {
+            "method": "GET",
+            "headers": {
+                'Api-Token': 'putSecretTokenInEnvironment'
+            }
+        })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data);
+            //this.setState(data);
+        });
+    }
+
     render() {
         return (
             <div className="">
