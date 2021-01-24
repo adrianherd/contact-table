@@ -1,19 +1,33 @@
 import React, { Component, ChangeEvent } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
+import {
+    ContactEntity,
+    Contact,
+    ContactTag,
+    Deal,
+    Tag,
+    MetaInfo
+} from "../types"
 
-type TableProps = {
+interface DataRes {
+    contactTags: ContactTag[];
+    deals: Deal[];
+    contacts: Contact[];
+    tags: Tag[];
+    meta: MetaInfo;
 }
-export class Table extends Component<TableProps> {
-    constructor(props: TableProps) {
+type TableState = ContactEntity[];
+export class Table extends Component<{}, TableState> {
+    constructor(props: {}) {
         super(props);
+        this.state = [];
     }
-
     componentDidMount() {
         fetch("api/3/contacts?status=-1&orders[email]=ASC&include=deals,contactTags.tags", {
-            "method": "GET",
-            "headers": {
-                'Api-Token': 'putSecretTokenInEnvironment'
+            'method': 'GET',
+            'headers': {
+                'Api-Token': `${process.env.REACT_APP_API_TOKEN}`
             }
         })
         .then(response => response.json())
@@ -21,6 +35,10 @@ export class Table extends Component<TableProps> {
             console.log(data);
             //this.setState(data);
         });
+    }
+
+    transformData(data: DataRes): ContactEntity[] {
+        return [];
     }
 
     render() {
@@ -53,8 +71,7 @@ export class Table extends Component<TableProps> {
     }
 }
 
-type TableRowProps = {
-}
+type TableRowProps = ContactEntity;
 export class TableRow extends Component<TableRowProps> {
     constructor(props: TableRowProps) {
         super(props);
