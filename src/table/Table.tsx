@@ -38,7 +38,23 @@ export class Table extends Component<{}, TableState> {
     }
 
     transformData(data: DataRes): ContactEntity[] {
-        return [];
+        let dealSum = (sum: number, d: Deal) => {
+            return d.value ? sum + +d.value : sum;
+        }
+        return data.contacts.map((contact) => {
+            let contactEntity: ContactEntity = {
+                contactName: `${contact.firstName} ${contact.lastName}`,
+                //contactTags: contact.contactTags?.map(ctId => data.tags.filter(t => t.id === data.contactTags.filter(ct => ct.id === ctId)[0].tag)[0]),
+                contactTags: data.tags.filter(t => data.contactTags.filter(ct => contact.contactTags?.includes(ct.id ?? '')).map(ct => ct?.tag).includes(t.id)),
+                //contactDeals: contact.deals?.map(dId => data.deals.filter(d => d.id === dId)[0]),
+                contactDeals: data.deals.filter(d => contact.deals?.includes(d.id ?? '')),
+                //totalValue: contact.deals?.map(dId => data.deals.filter(d => d.id === dId)[0]).reduce(dealSum, 0),
+                totalValue: data.deals.filter(d => contact.deals?.includes(d.id ?? '')).reduce(dealSum, 0),
+                currency: data.deals.filter(d => contact.deals?.includes(d.id ?? ''))[0].currency,
+                location:
+            };
+            return contactEntity;
+        });
     }
 
     render() {
